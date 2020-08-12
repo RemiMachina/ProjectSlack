@@ -13,9 +13,9 @@ inputs:
 runs:
       using: "docker"
       image: "Dockerfile"
-      args:
-        - ${{ inputs.script }}
-        - ${{ inputs.payload }}
+      env:
+          SLACK_SCRIPT: ${{ inputs.script }}
+          SLACK_PAYLOAD: ${{ inputs.payload }}
         
 branding:
     icon: "slack"  

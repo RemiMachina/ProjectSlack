@@ -1,3 +1,5 @@
 #!/bin/sh -l
 
-python /source/$1.py --payload "'$2'"
+echo "Hello"
+python source/$SLACK_SCRIPT.py --payload "'$SLACK_PAYLOAD'"
+echo "Goodbye"
