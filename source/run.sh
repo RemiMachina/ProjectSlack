@@ -1,3 +1,3 @@
 #!/bin/sh -l
 
-python $1.py --payload $2
+python $1 --payload $2
