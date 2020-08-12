@@ -12,6 +12,8 @@ parser.add_argument("-p", "--payload", help = "A JSON payload containing all req
 
 args = parser.parse_args()
 
+print(args.payload)
+
 class Payload:
 
     # Incoming GHA Payload
