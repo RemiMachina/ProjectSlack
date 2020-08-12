@@ -19,7 +19,7 @@ class Payload:
     # Required JSON format:
     # {
     #     "oauth": The secret oauth token of the bot to send the message
-    #     "passed": A flag indicating if the build passed and was successful
+    #     "status": A flag indicating if the build passed and was successful
     #     "number": The number of files that were changed affecting this build. If 0 and passed, no message will be posted.
     #     "image": The display name of the docker image that has been built
     #     "seconds": The number of seconds taken by the build process
@@ -32,13 +32,15 @@ class Payload:
         data = json.loads(raw)
         
         self.oauth = data["oauth"]
-        self.passed = data["passed"]
+        self.status = data["status"]
+        self.passed = ("success" == self.status)
         self.number = data["number"]
         self.image = data["image"]
         self.seconds = data["seconds"]
         self.job = data["job"]
         self.dockerhub = data["dockerhub"]
-
+    
+        
 try:
     
     payload = Payload(raw = args.payload)
