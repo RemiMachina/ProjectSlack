@@ -12,8 +12,8 @@ parser.add_argument("-p", "--payload", help = "A JSON payload containing all req
 
 args = parser.parse_args()
 
-print(args.payload)
-print(json.loads(args.payload))
+# Clean leading and trailing quotations
+args.payload = args.payload[1:][:-1]
 
 class Payload:
 
