@@ -47,10 +47,10 @@ try:
 
     if not (payload.passed and payload.number == 0):
 
-        sender = slack.lookup_sender(oauth = payload.oauth)
+        sender = slack.lookup_bot(oauth = payload.oauth)
         receiver = slack.lookup_channel(name = "github-actions")
 
-        duration = datetime.timedelta(secodnds = payload.seconds)
+        duration = datetime.timedelta(seconds = payload.seconds)
 
         passed = {
             True: {
@@ -79,7 +79,8 @@ try:
                 "type": "context",
                 "elements": [{
                     "type": "image",
-                    "image_url": passed[payload.passed]["icon"]
+                    "image_url": passed[payload.passed]["icon"],
+                    "alt_text": "docker icon"
                 }, {
                     "type": "mrkdwn",
                     "text": passed[payload.passed]["message"]
