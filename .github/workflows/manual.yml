@@ -1,0 +1,23 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Slack Test
+
+on:
+    workflow_dispatch:
+        inputs:
+            script:
+                description: "Script to execute"
+                required: true
+            payload:
+                description: "Payload data"
+                required: true
+
+jobs:
+  
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: remimachina/projectslack@v1.0.1
+              with:
+                  script: ${{ github.event.inputs.script }}
+                  payload: ${{ github.event.inputs.payload }}
