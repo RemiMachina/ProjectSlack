@@ -29,6 +29,8 @@ class Payload:
 
     def __init__(self, raw):
 
+        print(raw)
+
         data = json.loads(raw)
 
         self.oauth = data["oauth"]
