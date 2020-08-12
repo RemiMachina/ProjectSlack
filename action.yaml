@@ -1,0 +1,22 @@
+name: "Remi Slack"
+description: "Contains a variety of pre-built messaging scripts for outputting results from Github Actions"
+
+inputs:
+    script:
+        description: "The name of the script to execute"
+        required: true
+        
+    payload:
+        description: "JSON encoded payload of data for the script to execute"    
+        required: true
+        
+runs:
+      using: "docker"
+      image: "Dockerfile"
+      args:
+        - ${{ inputs.script }}
+        - ${{ inputs.payload }}
+        
+branding:
+    icon: "slack"  
+    color: "orange"
