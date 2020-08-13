@@ -5,3 +5,4 @@ A simple GitHub Action to encapsulate complex slack messages and make them readi
 ## Current Methods
 
 - gha_image_build
+- gha_code_check
