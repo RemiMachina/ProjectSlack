@@ -35,17 +35,14 @@ class slack:
         print(response.json())
         
     @classmethod
-    def send_file(cls, path: str, sender: directories.Bot, receiver: directories.Channel):
-        
-        with open(path, "r") as file:
-            contents = file.read()
-        
+    def send_file(cls, data: str, sender: directories.Bot, receiver: directories.Channel):
+    
         response = requests.post(
             url = cls.api_url("files.upload"),
             data = json.dumps({
                 "channels": receiver.id,
                 "token": sender.oauth,
-                "file": contents,
+                "file": data,
                 "filename": path.split("/")[-1],
                 "filetype": path.split(".")[-1]
             }),
