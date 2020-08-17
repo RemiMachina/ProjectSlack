@@ -31,7 +31,8 @@ class Payload:
 
         data = json.loads(raw)
 
-        self.lint = data["lint"]
+        self.errors = data["errors"]
+        self.warnings = data["warnings"]
         self.oauth = data["oauth"]
 
 try:
@@ -41,7 +42,32 @@ try:
     sender = slack.lookup_bot(oauth = payload.oauth)
     receiver = slack.lookup_channel(name = "github-actions")
 
-    slack.send_file(path = payload.lint, sender = sender, receiver = receiver)
+    blocks = [
+        {
+            "type": "section",
+            "text": {
+                "type": "plain_text",
+                "text": "Code check has completed",
+                "emoji": True
+            }
+        }, {
+            "type": "section",
+            "text": {
+                "type": "plain_text",
+                "text": f"Errors: {payload.errors}",
+                "emoji": True
+            }
+        }, {
+            "type": "section",
+            "text": {
+                "type": "plain_text",
+                "text": f"Warnings: {payload.warnings}",
+                "emoji": True
+            }
+        }
+    ]
+
+    slack.send_blocks(blocks = blocks, sender = sender, receiver = receiver)
 
 except Exception as e:
 
