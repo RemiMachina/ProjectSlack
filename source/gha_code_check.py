@@ -31,9 +31,12 @@ class Payload:
 
         data = json.loads(raw)
 
-        self.errors = data["errors"]
-        self.warnings = data["warnings"]
         self.oauth = data["oauth"]
+
+        self.pylint_errors = data["pylint"]["errors"]
+        self.pylint_warnings = data["pylint"]["warnings"]
+        self.pylint_suggestions = data["pylint"]["suggestions"]
+        
 
 try:
 
@@ -53,15 +56,8 @@ try:
         }, {
             "type": "section",
             "text": {
-                "type": "plain_text",
-                "text": f"Errors: {payload.errors}",
-                "emoji": True
-            }
-        }, {
-            "type": "section",
-            "text": {
-                "type": "plain_text",
-                "text": f"Warnings: {payload.warnings}",
+                "type": "markdown",
+                "text": f"**Lint Report:**\n🛑 Errors: {payload.pylint_errors}\n⚠️ Warnings: {payload.pylint_warnings}\n👎 Sugestions: {payload.pylint_suggestions}\n",
                 "emoji": True
             }
         }
