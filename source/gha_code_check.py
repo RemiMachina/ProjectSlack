@@ -56,9 +56,8 @@ try:
         }, {
             "type": "section",
             "text": {
-                "type": "markdown",
-                "text": f"**Lint Report:**\n🛑 Errors: {payload.pylint_errors}\n⚠️ Warnings: {payload.pylint_warnings}\n👎 Sugestions: {payload.pylint_suggestions}\n",
-                "emoji": True
+                "type": "mrkdwn",
+                "text": f"*Lint Report:* \n🛑 Errors: {payload.pylint_errors}\n⚠️ Warnings: {payload.pylint_warnings}\n👎 Sugestions: {payload.pylint_suggestions}\n"
             }
         }
     ]
