@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import sys
 import json
 import argparse
 import datetime
@@ -122,3 +123,4 @@ try:
 except Exception as e:
 
     print(e)
+    sys.exit(1)
