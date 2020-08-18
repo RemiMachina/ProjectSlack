@@ -1,0 +1,29 @@
+name: Auto-Release Workflow
+
+on: [ push ]
+
+jobs:
+    
+    auto_release:
+        
+        name: Auto Release
+        runs-on: ubuntu-latest
+        steps:
+            
+          - name: Checkout
+            id: checkout
+            uses: actions/checkout@v2
+            with:
+                ref: ${{ github.event.inputs.branch }}
+
+          - name: Set Email
+            run: git config --global user.email "cschacher@remi.ai"
+            
+          - name: Set Name
+            run: git config --global user.name "Github Automator"
+
+          - name: Overwrite Tag
+            run: git tag -m "Initial release" -f -a v1
+            
+          - name: Push Tag
+            run: git push -f --tags
