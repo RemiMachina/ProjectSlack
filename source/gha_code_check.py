@@ -78,7 +78,7 @@ try:
                     "text": "🚀  View Action",
                     "emoji": True
                 },
-                "url": f"https://github.com/RemiMachina/VNet/runs/{payload.run}",
+                "url": f"https://github.com/RemiMachina/VNet/actions/runs/{payload.run}",
                 "style": "primary"
             }]
         }
