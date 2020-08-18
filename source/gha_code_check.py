@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import sys
 import json
 import argparse
 import datetime
@@ -32,11 +33,14 @@ class Payload:
         data = json.loads(raw)
 
         self.oauth = data["oauth"]
+        self.run = data["run"]
 
         self.pylint_errors = data["pylint"]["errors"]
         self.pylint_warnings = data["pylint"]["warnings"]
         self.pylint_suggestions = data["pylint"]["suggestions"]
         
+        self.pydoc_missing = data["pydoc"]["missing"]
+        self.pydoc_conventions = data["pydoc"]["conventions"]
 
 try:
 
@@ -50,15 +54,33 @@ try:
             "type": "section",
             "text": {
                 "type": "plain_text",
-                "text": "Code check has completed",
+                "text": "Python code check has completed",
                 "emoji": True
             }
         }, {
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": f"*Lint Report:* \n🛑 Errors: {payload.pylint_errors}\n⚠️ Warnings: {payload.pylint_warnings}\n👎 Sugestions: {payload.pylint_suggestions}\n"
+                "text": f"*Lint Report:* \n🚨  Errors: {payload.pylint_errors}\n⚠️  Warnings: {payload.pylint_warnings}\n💡  Sugestions: {payload.pylint_suggestions}\n"
             }
+        }, {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": f"*Docstring Report:* \n🔍  Missing: {payload.pydoc_missing}\n👎  Conventions: {payload.pydoc_conventions}\n"
+            }
+        }, {
+            "type": "actions",
+            "elements": [{
+                "type": "button",
+                "text": {
+                    "type": "plain_text",
+                    "text": "🚀  View Action",
+                    "emoji": True
+                },
+                "url": f"https://github.com/RemiMachina/VNet/runs/{payload.run}",
+                "style": "primary"
+            }]
         }
     ]
 
@@ -67,3 +89,4 @@ try:
 except Exception as e:
 
     print(e)
+    sys.exit(1)
