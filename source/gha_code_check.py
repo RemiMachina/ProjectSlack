@@ -61,13 +61,7 @@ try:
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": f"*Lint Report:* \n🚨  Errors: {payload.pylint_errors}\n⚠️  Warnings: {payload.pylint_warnings}\n💡  Sugestions: {payload.pylint_suggestions}\n"
-            }
-        }, {
-            "type": "section",
-            "text": {
-                "type": "mrkdwn",
-                "text": f"*Docstring Report:* \n🔍  Missing: {payload.pydoc_missing}\n👎  Conventions: {payload.pydoc_conventions}\n"
+                "text": f"*Lint Report:* \n🚨  Errors: {payload.pylint_errors}\n"
             }
         }, {
             "type": "actions",
@@ -83,6 +77,41 @@ try:
             }]
         }
     ]
+
+    # blocks = [
+    #     {
+    #         "type": "section",
+    #         "text": {
+    #             "type": "plain_text",
+    #             "text": "Python code check has completed",
+    #             "emoji": True
+    #         }
+    #     }, {
+    #         "type": "section",
+    #         "text": {
+    #             "type": "mrkdwn",
+    #             "text": f"*Lint Report:* \n🚨  Errors: {payload.pylint_errors}\n⚠️  Warnings: {payload.pylint_warnings}\n💡  Sugestions: {payload.pylint_suggestions}\n"
+    #         }
+    #     }, {
+    #         "type": "section",
+    #         "text": {
+    #             "type": "mrkdwn",
+    #             "text": f"*Docstring Report:* \n🔍  Missing: {payload.pydoc_missing}\n👎  Conventions: {payload.pydoc_conventions}\n"
+    #         }
+    #     }, {
+    #         "type": "actions",
+    #         "elements": [{
+    #             "type": "button",
+    #             "text": {
+    #                 "type": "plain_text",
+    #                 "text": "🚀  View Action",
+    #                 "emoji": True
+    #             },
+    #             "url": f"https://github.com/RemiMachina/VNet/actions/runs/{payload.run}",
+    #             "style": "primary"
+    #         }]
+    #     }
+    # ]
 
     slack.send_blocks(blocks = blocks, sender = sender, receiver = receiver)
 
