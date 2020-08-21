@@ -61,7 +61,7 @@ try:
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": f"*Lint Report:* \n🚨  Errors: {payload.pylint_errors}\n"
+                "text": f"*Lint Report:* \n🚨  Errors: {payload.pylint_errors}\n⚠️  Warnings: {payload.pylint_warnings}"
             }
         }, {
             "type": "actions",
