@@ -100,7 +100,7 @@ try:
                         "text": passed[payload.passed]["emoji"] + "  View Action",
                         "emoji": True
                     },
-                    "url": f"https://github.com/RemiMachina/VNet/runs/{payload.job}",
+                    "url": f"https://github.com/RemiMachina/VNet/actions/runs/{payload.job}",
                     "style": passed[payload.passed]["style"]
                 }, {
                     "type": "button",
