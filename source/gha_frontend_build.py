@@ -42,8 +42,6 @@ try:
         sender = slack.lookup_bot(oauth = payload.oauth)
         receiver = slack.lookup_channel(name = "autobuild-frontend")
 
-        duration = datetime.timedelta(seconds = payload.seconds)
-
         passed = {
             True: {
                 "icon": "https://i.imgur.com/iKI4cWZ.png",
