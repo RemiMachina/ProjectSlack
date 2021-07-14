@@ -40,7 +40,7 @@ try:
     if not (payload.passed and payload.number == 0):
 
         sender = slack.lookup_bot(oauth = payload.oauth)
-        receiver = slack.lookup_channel(name = "github-actions")
+        receiver = slack.lookup_channel(name = "autobuild-frontend")
 
         duration = datetime.timedelta(seconds = payload.seconds)
 

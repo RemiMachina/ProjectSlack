@@ -15,7 +15,8 @@ class ChannelDirectory(Directory):
     
     # The directory attribute is required by the Directory super class and is used to lookup DirectoryObjects
     directory = [
-        Channel(id = "C018EDFN5NJ", name = "github-actions")
+        Channel(id="C018EDFN5NJ", name="github-actions"),
+        Channel(id="C027K0PEH0X", name="autobuild-frontend")
     ]
     
     # logging = "CJ6JV6JR2"
